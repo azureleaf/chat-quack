@@ -10,7 +10,9 @@
           </small>
         </footer>
       </blockquote>
-      <Editor />
     </v-flex>
+    <v-footer absolute class="pa-0">
+      <Editor />
+    </v-footer>
   </v-layout>
 </template>
