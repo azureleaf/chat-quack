@@ -1,8 +1,6 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
       clipped
       fixed
       app
@@ -44,6 +42,10 @@
         <v-card-title>概要</v-card-title>
         <v-card-text>概要はありません</v-card-text>
       </v-card>
+      <v-card>
+        <v-card-title>タスク</v-card-title>
+        <v-card-text>概要はありません</v-card-text>
+      </v-card>
     </v-navigation-drawer>
     <v-app-bar
       clipped-left
@@ -57,20 +59,31 @@
     >
       <img class="mr-3" src="/applogo.png" height="45" />
       <!-- <v-toolbar-title v-text="title" /> -->
-      <v-text-field
-        label="チャット名、メッセージ内容を検索"
-        single-line
-        outlined
-        dense
-        prepend-icon="mdi-magnify"
-      ></v-text-field>
+      <v-col cols="3">
+        <v-text-field
+          label="チャット名、メッセージ内容を検索"
+          single-line
+          outlined
+          dense
+          prepend-icon="mdi-magnify"
+        ></v-text-field>
+      </v-col>
       <v-spacer />
-      <v-btn>
+      <v-btn color="blue-grey darken-4">
         <v-icon>mdi-checkbox-marked-outline</v-icon>
       </v-btn>
-      <v-btn>
-        <v-icon>mdi-information-outline</v-icon>
-      </v-btn>
+      <v-col cols="2">
+        <v-select
+          :items="channels"
+          label="Standard"
+          outlined
+          item-color="grey"
+          dense
+          :width="50"
+          item-value="title"
+          item-text="title"
+        ></v-select>
+      </v-col>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -84,9 +97,6 @@
 export default {
   data() {
     return {
-      clipped: true,
-      drawer: true,
-      fixed: true,
       items: [
         {
           icon: "mdi-apps",

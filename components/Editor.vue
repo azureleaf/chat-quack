@@ -4,14 +4,11 @@
       <v-col>
         <v-card flat tile>
           <v-card-title>
-            <v-btn>
+            <v-btn text>
               <v-icon>mdi-emoticon-outline</v-icon>
             </v-btn>
-            <v-btn>
-              <v-icon>mdi-arrow-right-bold-circle-outline</v-icon>
-            </v-btn>
-            <v-btn>
-              <v-icon>mdi-paperclip</v-icon>
+            <v-btn text>
+              <v-icon>mdi-at</v-icon>
             </v-btn>
             <v-spacer />
             <v-btn color="primary" class="btn" :disabled="msg.length == 0"
