@@ -16,6 +16,14 @@
           <v-list-item-content>
             <v-list-item-title>{{ channel.title }}</v-list-item-title>
           </v-list-item-content>
+          <v-list-item-action>
+            <v-btn icon @click.prevent="channel.isPinned = !channel.isPinned" title="このチャットをピン留めしてチャット一覧の上に固定できます">
+              <v-icon v-if="channel.isPinned" color="indigo darken-3"
+                >mdi-pin</v-icon
+              >
+              <v-icon v-else color="blue-grey lighten-4">mdi-pin</v-icon>
+            </v-btn>
+          </v-list-item-action>
         </v-list-item>
         <v-list-item
           v-for="(item, i) in items"
@@ -109,6 +117,7 @@ export default {
       channels: [
         {
           id: 1,
+          isPinned: false,
           isPerson: false,
           avatar: "/home.png",
           title: "鴨川家グループ",
@@ -116,6 +125,7 @@ export default {
         },
         {
           id: 2,
+          isPinned: false,
           isPerson: true,
           avatar: "/duck_yellow.png",
           title: "鴨川檸檬",
@@ -123,6 +133,7 @@ export default {
         },
         {
           id: 3,
+          isPinned: false,
           isPerson: true,
           avatar: "/duck_purple.png",
           title: "鴨川紫苑",
@@ -130,6 +141,7 @@ export default {
         },
         {
           id: 4,
+          isPinned: false,
           isPerson: true,
           avatar: "/duck_green.png",
           title: "鴨川若菜",
