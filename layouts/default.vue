@@ -41,8 +41,8 @@
     </v-navigation-drawer>
     <v-navigation-drawer clipped fixed right app>
       <v-card>
-        <v-card-title>Description</v-card-title>
-        <v-card-text>No description</v-card-text>
+        <v-card-title>概要</v-card-title>
+        <v-card-text>概要はありません</v-card-text>
       </v-card>
     </v-navigation-drawer>
     <v-app-bar
@@ -58,7 +58,7 @@
       <img class="mr-3" src="/applogo.png" height="45" />
       <!-- <v-toolbar-title v-text="title" /> -->
       <v-text-field
-        label="Type to search for chat / message"
+        label="チャット名、メッセージ内容を検索"
         single-line
         outlined
         dense

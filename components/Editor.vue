@@ -15,7 +15,7 @@
             </v-btn>
             <v-spacer />
             <v-btn color="primary" class="btn" :disabled="msg.length == 0"
-              >Send</v-btn
+              >送信</v-btn
             >
           </v-card-title>
           <v-card-text>
@@ -23,7 +23,7 @@
               outlined
               no-resize
               v-model="msg"
-              label="Enter your message here (press Shift + Enter for send)"
+              label="ここにメッセージを入力 (Shift + Enterキーで送信)"
             ></v-textarea>
           </v-card-text>
         </v-card>
