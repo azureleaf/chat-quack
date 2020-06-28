@@ -24,12 +24,23 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-toolbar-title v-text="title" />
+    <v-app-bar
+      :clipped-left="clipped"
+      fixed
+      app
+      dark
+      dense
+      color="blue-grey darken-4"
+      align="center"
+    >
+      <img class="mr-3" src="/applogo.png" height="45" />
+      <!-- <v-toolbar-title v-text="title" /> -->
       <v-text-field
         label="Type to search for chat / message"
         single-line
         outlined
+        dense
+        prepend-icon="mdi-magnify"
       ></v-text-field>
       <v-spacer />
       <v-btn>
