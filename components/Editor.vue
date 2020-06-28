@@ -14,14 +14,17 @@
               <v-icon>mdi-paperclip</v-icon>
             </v-btn>
             <v-spacer />
-            <v-checkbox
-              v-model="enableEnterToSend"
-              label="Press Enter to send"
-            ></v-checkbox>
-            <v-btn color="primary" class="btn">Send</v-btn>
+            <v-btn color="primary" class="btn" :disabled="msg.length == 0"
+              >Send</v-btn
+            >
           </v-card-title>
           <v-card-text>
-            <v-textarea outlined no-resize></v-textarea>
+            <v-textarea
+              outlined
+              no-resize
+              v-model="msg"
+              label="Enter your message here (press Shift + Enter for send)"
+            ></v-textarea>
           </v-card-text>
         </v-card>
       </v-col>
@@ -33,7 +36,7 @@
 export default {
   data() {
     return {
-      enableEnterToSend: false
+      msg: ""
     };
   }
 };
