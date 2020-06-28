@@ -1,10 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      clipped
-      fixed
-      app
-    >
+    <v-navigation-drawer clipped fixed app>
       <v-list>
         <v-list-item
           v-for="(channel, i) in channels"
@@ -74,13 +70,14 @@
       </v-btn>
       <v-col cols="2">
         <v-select
-          :items="channels"
-          label="Standard"
+          v-model="accountId"
+          :items="channels.filter(channel => channel.isPerson)"
+          label="アカウント名"
           outlined
           item-color="grey"
           dense
           :width="50"
-          item-value="title"
+          item-value="id"
           item-text="title"
         ></v-select>
       </v-col>
@@ -111,30 +108,36 @@ export default {
       ],
       channels: [
         {
+          id: 1,
+          isPerson: false,
           avatar: "/home.png",
           title: "鴨川家グループ",
           to: "/group"
         },
         {
+          id: 2,
+          isPerson: true,
           avatar: "/duck_yellow.png",
           title: "鴨川檸檬",
           to: "/yellow"
         },
         {
+          id: 3,
+          isPerson: true,
           avatar: "/duck_purple.png",
           title: "鴨川紫苑",
           to: "/purple"
         },
         {
+          id: 4,
+          isPerson: true,
           avatar: "/duck_green.png",
           title: "鴨川若菜",
           to: "/green"
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: "Chatquack"
+      title: "Chatquack",
+      accountId: 2
     };
   }
 };
