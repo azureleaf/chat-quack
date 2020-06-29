@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app dark v-if="channels">
     <v-navigation-drawer clipped fixed permanent app>
       <v-list>
         <v-list-item
@@ -54,7 +54,7 @@
       align="center"
     >
       <img class="mr-3" src="/applogo.png" height="45" />
-      <v-col cols="3">
+      <v-col cols="4">
         <v-text-field
           label="チャット名、メッセージ内容を検索"
           single-line
@@ -105,46 +105,14 @@ export default {
           to: "/inspire"
         }
       ],
-      channels: [
-        {
-          id: 1,
-          isPinned: false,
-          isPerson: false,
-          avatar: "/home.png",
-          title: "鴨川家雑談"
-        },
-        {
-          id: 2,
-          isPinned: false,
-          isPerson: true,
-          avatar: "/duck_yellow.png",
-          title: "鴨川檸檬"
-        },
-        {
-          id: 3,
-          isPinned: false,
-          isPerson: true,
-          avatar: "/duck_purple.png",
-          title: "鴨川紫苑"
-        },
-        {
-          id: 4,
-          isPinned: false,
-          isPerson: true,
-          avatar: "/duck_green.png",
-          title: "鴨川若菜"
-        },
-        {
-          id: 5,
-          isPinned: false,
-          isPerson: true,
-          avatar: "/duck_pink.png",
-          title: "鴨川桜"
-        }
-      ],
       title: "Chatquack",
       accountId: 2
     };
+  },
+  computed: {
+    channels() {
+      return this.$store.state.channels;
+    }
   }
 };
 </script>
