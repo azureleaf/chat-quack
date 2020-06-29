@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex class="text-center">
+    <v-flex class="text-center pa-0">
       Viewer
       {{ this.$route.params.id }}
       <Message />

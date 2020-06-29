@@ -36,6 +36,15 @@ export const state = () => ({
       avatar: "/duck_pink.png",
       title: "鴨川桜"
     }
+  ],
+  msgs: [
+    {
+      id: 1,
+      senderId: 2,
+      recipientId: null,
+      reaction: { type: null, count: null },
+      text: "こんにちは"
+    }
   ]
 });
 

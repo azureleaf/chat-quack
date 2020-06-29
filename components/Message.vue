@@ -10,10 +10,10 @@
           </v-col>
           <v-col cols="11">
             <v-card flat tile>
-              <v-card-title class="py-1 text-subtitle-2">
-                田中太郎
+              <v-card-title class="py-1">
+                <span class="text-subtitle-2 font-weight-bold indigo--text text--darken-1">田中太郎</span>
                 <v-spacer />
-                2020年7月1日
+                <span class="text-caption grey--text text--darken-1">2020年7月1日</span>
               </v-card-title>
               <v-card-text class="text-left">
                 こんにちは
