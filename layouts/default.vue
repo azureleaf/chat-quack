@@ -1,11 +1,11 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer clipped fixed app>
+    <v-navigation-drawer clipped fixed permanent app>
       <v-list>
         <v-list-item
           v-for="(channel, i) in channels"
           :key="i"
-          :to="channel.to"
+          :to="`/users/${channel.id}`"
           router
           exact
           class="px-0"
@@ -29,30 +29,18 @@
             </v-btn>
           </v-list-item-action>
         </v-list-item>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-navigation-drawer clipped fixed right app>
-      <v-card>
-        <v-card-title>概要</v-card-title>
-        <v-card-text>概要はありません</v-card-text>
+    <v-navigation-drawer clipped fixed right app permanent>
+      <v-card color="grey lighten-2" flat outlined tile>
+        <v-card-title class="text-subtitle-1 pa-2"
+          ><span>概要</span><v-spacer /><v-btn icon
+            ><v-icon>mdi-pencil</v-icon></v-btn
+          ></v-card-title
+        >
       </v-card>
-      <v-card>
-        <v-card-title>タスク</v-card-title>
-        <v-card-text>概要はありません</v-card-text>
+      <v-card flat outlined tile>
+        <v-card-text class="px-2">概要はありません</v-card-text>
       </v-card>
     </v-navigation-drawer>
     <v-app-bar
@@ -66,7 +54,6 @@
       align="center"
     >
       <img class="mr-3" src="/applogo.png" height="45" />
-      <!-- <v-toolbar-title v-text="title" /> -->
       <v-col cols="3">
         <v-text-field
           label="チャット名、メッセージ内容を検索"
@@ -77,9 +64,9 @@
         ></v-text-field>
       </v-col>
       <v-spacer />
-      <v-btn color="blue-grey darken-4" depressed>
+      <!-- <v-btn color="blue-grey darken-4" depressed>
         <v-icon>mdi-checkbox-marked-outline</v-icon>
-      </v-btn>
+      </v-btn> -->
       <v-col cols="2">
         <v-select
           v-model="accountId"
@@ -124,40 +111,35 @@ export default {
           isPinned: false,
           isPerson: false,
           avatar: "/home.png",
-          title: "鴨川家雑談",
-          to: "/group"
+          title: "鴨川家雑談"
         },
         {
           id: 2,
           isPinned: false,
           isPerson: true,
           avatar: "/duck_yellow.png",
-          title: "鴨川檸檬",
-          to: "/lemon"
+          title: "鴨川檸檬"
         },
         {
           id: 3,
           isPinned: false,
           isPerson: true,
           avatar: "/duck_purple.png",
-          title: "鴨川紫苑",
-          to: "/shion"
+          title: "鴨川紫苑"
         },
         {
           id: 4,
           isPinned: false,
           isPerson: true,
           avatar: "/duck_green.png",
-          title: "鴨川若菜",
-          to: "/wakana"
+          title: "鴨川若菜"
         },
         {
           id: 5,
           isPinned: false,
           isPerson: true,
           avatar: "/duck_pink.png",
-          title: "鴨川桜",
-          to: "/sakura"
+          title: "鴨川桜"
         }
       ],
       title: "Chatquack",
