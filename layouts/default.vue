@@ -17,7 +17,11 @@
             <v-list-item-title>{{ channel.title }}</v-list-item-title>
           </v-list-item-content>
           <v-list-item-action>
-            <v-btn icon @click.prevent="channel.isPinned = !channel.isPinned" title="このチャットをピン留めしてチャット一覧の上に固定できます">
+            <v-btn
+              icon
+              @click.prevent="channel.isPinned = !channel.isPinned"
+              title="このチャットをピン留めしてチャット一覧の上に固定できます"
+            >
               <v-icon v-if="channel.isPinned" color="indigo darken-3"
                 >mdi-pin</v-icon
               >
@@ -73,7 +77,7 @@
         ></v-text-field>
       </v-col>
       <v-spacer />
-      <v-btn color="blue-grey darken-4">
+      <v-btn color="blue-grey darken-4" depressed>
         <v-icon>mdi-checkbox-marked-outline</v-icon>
       </v-btn>
       <v-col cols="2">
@@ -120,7 +124,7 @@ export default {
           isPinned: false,
           isPerson: false,
           avatar: "/home.png",
-          title: "鴨川家グループ",
+          title: "鴨川家雑談",
           to: "/group"
         },
         {
@@ -129,7 +133,7 @@ export default {
           isPerson: true,
           avatar: "/duck_yellow.png",
           title: "鴨川檸檬",
-          to: "/yellow"
+          to: "/lemon"
         },
         {
           id: 3,
@@ -137,7 +141,7 @@ export default {
           isPerson: true,
           avatar: "/duck_purple.png",
           title: "鴨川紫苑",
-          to: "/purple"
+          to: "/shion"
         },
         {
           id: 4,
@@ -145,7 +149,15 @@ export default {
           isPerson: true,
           avatar: "/duck_green.png",
           title: "鴨川若菜",
-          to: "/green"
+          to: "/wakana"
+        },
+        {
+          id: 5,
+          isPinned: false,
+          isPerson: true,
+          avatar: "/duck_pink.png",
+          title: "鴨川桜",
+          to: "/sakura"
         }
       ],
       title: "Chatquack",
