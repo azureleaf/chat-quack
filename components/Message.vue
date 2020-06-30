@@ -11,12 +11,17 @@
           <v-col cols="11">
             <v-card flat tile>
               <v-card-title class="py-1">
-                <span class="text-subtitle-2 font-weight-bold indigo--text text--darken-1">田中太郎</span>
+                <span
+                  class="text-subtitle-2 font-weight-bold indigo--text text--darken-1"
+                  >{{ sender }}</span
+                >
                 <v-spacer />
-                <span class="text-caption grey--text text--darken-1">2020年7月1日</span>
+                <span class="text-caption grey--text text--darken-1"
+                  >2020年7月1日</span
+                >
               </v-card-title>
               <v-card-text class="text-left">
-                こんにちは
+                {{ msg.text }}
               </v-card-text>
             </v-card>
           </v-col>
@@ -28,9 +33,21 @@
 
 <script>
 export default {
+  props: ["msgId"],
   data() {
     return {};
-  }
+  },
+  computed: {
+    msg() {
+      return this.$store.state.msgs.filter(msg => msg.id == this.msgId)[0];
+    },
+    sender() {
+      return this.$store.state.channels.filter(
+        channel => channel.id == this.msg.senderId
+      )[0].title;
+    }
+  },
+  mounted() {}
 };
 </script>
 

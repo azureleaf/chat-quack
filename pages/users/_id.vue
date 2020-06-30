@@ -3,7 +3,7 @@
     <v-flex class="text-center pa-0">
       Viewer
       {{ this.$route.params.id }}
-      <Message />
+      <Message msgId="2" />
     </v-flex>
     <v-footer absolute class="pa-0">
       <Editor />

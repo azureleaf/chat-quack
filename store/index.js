@@ -43,7 +43,14 @@ export const state = () => ({
       senderId: 2,
       recipientId: null,
       reaction: { type: null, count: null },
-      text: "こんにちは"
+      text: "こんにちはa"
+    },
+    {
+      id: 2,
+      senderId: 2,
+      recipientId: null,
+      reaction: { type: null, count: null },
+      text: "私です"
     }
   ]
 });
