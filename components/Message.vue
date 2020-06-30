@@ -17,8 +17,8 @@
                 >
                 <v-spacer />
                 <span class="text-caption grey--text text--darken-1"
-                  >2020年7月1日</span
-                >
+                  >{{ timestamp }}
+                </span>
               </v-card-title>
               <v-card-text class="text-left">
                 {{ msg.text }}
@@ -45,6 +45,11 @@ export default {
       return this.$store.state.channels.filter(
         channel => channel.id == this.msg.senderId
       )[0].title;
+    },
+    timestamp() {
+      const ts = new Date(this.msg.timestamp);
+      return `${ts.getMonth() +
+        1}月${ts.getDate()}日 ${ts.getHours()}:${ts.getMinutes()}`;
     }
   },
   mounted() {}

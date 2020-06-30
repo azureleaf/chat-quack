@@ -43,6 +43,7 @@ export const state = () => ({
       senderId: 2,
       recipientId: null,
       reaction: { type: null, count: null },
+      timestamp: "2020-06-30T05:10:33.717Z",
       text: "こんにちはa"
     },
     {
@@ -50,6 +51,7 @@ export const state = () => ({
       senderId: 2,
       recipientId: null,
       reaction: { type: null, count: null },
+      timestamp: "2020-06-30T05:10:34.717Z",
       text: "私です"
     }
   ]
