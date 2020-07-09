@@ -39,6 +39,68 @@ export const state = () => ({
       title: "鴨川桜"
     }
   ],
+  users: [
+    {
+      id: 2,
+      avatar: "/duck_yellow.png",
+      title: "鴨川檸檬"
+    },
+    {
+      id: 3,
+      avatar: "/duck_purple.png",
+      title: "鴨川紫苑"
+    },
+    {
+      id: 4,
+      avatar: "/duck_green.png",
+      title: "鴨川若菜"
+    },
+    {
+      id: 5,
+      avatar: "/duck_pink.png",
+      title: "鴨川桜"
+    }
+  ],
+  rooms: [
+    {
+      id: 10001,
+      isBilateral: false,
+      avatar: "/home.png",
+      name: "鴨川家雑談",
+      members: [
+        { id: 1, isPinning: true },
+        { id: 2, isPinning: false }
+      ]
+    },
+    {
+      id: 10002,
+      isBilateral: true,
+      avatar: null,
+      name: null,
+      members: []
+    },
+    {
+      id: 10003,
+      members: [],
+      isBilateral: true,
+      avatar: null,
+      name: null
+    },
+    {
+      id: 10004,
+      members: [],
+      isBilateral: true,
+      avatar: null,
+      name: null
+    },
+    {
+      id: 10005,
+      members: [],
+      isBilateral: true,
+      avatar: null,
+      name: null
+    }
+  ],
   // should be stored in the firebase later
   msgs: [
     {
