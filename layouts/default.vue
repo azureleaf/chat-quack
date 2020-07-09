@@ -14,9 +14,8 @@
             <img :src="channel.avatar" />
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title
-              >
-              <span v-if="accountId == channel.id">マイチャット</span>
+            <v-list-item-title>
+              <span v-if="viewerId == channel.id">マイチャット</span>
               <span v-else>{{ channel.title }}</span></v-list-item-title
             >
           </v-list-item-content>
@@ -70,7 +69,7 @@
       <v-spacer />
       <v-col cols="2">
         <v-select
-          v-model="accountId"
+          v-model="viewerId"
           :items="channels.filter(channel => channel.isPerson)"
           label="アカウント名"
           outlined
@@ -79,6 +78,7 @@
           :width="50"
           item-value="id"
           item-text="title"
+          @change="updateViewerId"
         ></v-select>
       </v-col>
     </v-app-bar>
@@ -107,13 +107,23 @@ export default {
         }
       ],
       title: "Chatquack",
-      accountId: 2
+      viewerId: null
     };
   },
   computed: {
     channels() {
       return this.$store.state.channels;
     }
+  },
+  methods: {
+    // Switch the viewer on selected
+    updateViewerId() {
+      this.$store.commit("setViewerId", { viewerId: this.viewerId });
+    }
+  },
+  mounted() {
+    // Set the initial viewer
+    this.viewerId = this.$store.state.viewerId;
   }
 };
 </script>
