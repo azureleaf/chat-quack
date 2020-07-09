@@ -14,7 +14,11 @@
             <img :src="channel.avatar" />
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title>{{ channel.title }}</v-list-item-title>
+            <v-list-item-title
+              >
+              <span v-if="accountId == channel.id">マイチャット</span>
+              <span v-else>{{ channel.title }}</span></v-list-item-title
+            >
           </v-list-item-content>
           <v-list-item-action>
             <v-btn
@@ -64,9 +68,6 @@
         ></v-text-field>
       </v-col>
       <v-spacer />
-      <!-- <v-btn color="blue-grey darken-4" depressed>
-        <v-icon>mdi-checkbox-marked-outline</v-icon>
-      </v-btn> -->
       <v-col cols="2">
         <v-select
           v-model="accountId"
