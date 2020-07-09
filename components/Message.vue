@@ -5,7 +5,7 @@
         <v-row>
           <v-col cols="1">
             <v-avatar>
-              <img src="/duck_yellow.png" />
+              <img :src="avatarUri" />
             </v-avatar>
           </v-col>
           <v-col cols="11">
@@ -38,6 +38,12 @@ export default {
     return { viewerId: null };
   },
   computed: {
+    // Get the URI of the avatar image of this message sender
+    avatarUri() {
+      return this.$store.state.channels.filter(
+        channel => channel.id == this.msg.senderId
+      )[0].avatar;
+    },
     // Return a single message object for the message ID specified by the prop
     msg() {
       return this.$store.state.msgs.filter(msg => msg.id == this.msgId)[0];
