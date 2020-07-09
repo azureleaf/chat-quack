@@ -33,26 +33,31 @@
 
 <script>
 export default {
-  props: ["msgId"],
+  props: ["msgId", "channelId"],
   data() {
-    return {};
+    return { viewerId: null };
   },
   computed: {
+    // Return a single message object for the message ID specified by the prop
     msg() {
       return this.$store.state.msgs.filter(msg => msg.id == this.msgId)[0];
     },
+    // Map the sender ID in the msg object to the readable name
     sender() {
       return this.$store.state.channels.filter(
         channel => channel.id == this.msg.senderId
       )[0].title;
     },
+    // Format the timestamp notation into readable string
     timestamp() {
       const ts = new Date(this.msg.timestamp);
       return `${ts.getMonth() +
         1}月${ts.getDate()}日 ${ts.getHours()}:${ts.getMinutes()}`;
     }
   },
-  mounted() {}
+  mounted() {
+    this.viewerId = this.$store.state.viewerId;
+  }
 };
 </script>
 

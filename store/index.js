@@ -44,7 +44,7 @@ export const state = () => ({
     {
       id: 1,
       senderId: 2,
-      recipientId: null,
+      channelId: null,
       reaction: [],
       timestamp: "2020-06-30T05:10:33.717Z",
       text: "皆さんこんにちは。レモンです。"
@@ -52,7 +52,7 @@ export const state = () => ({
     {
       id: 2,
       senderId: 2,
-      recipientId: 3,
+      channelId: 3,
       reaction: [],
       timestamp: "2020-07-03T05:10:34.717Z",
       text: "紫苑さんこんにちは。レモンです。"
@@ -60,7 +60,7 @@ export const state = () => ({
     {
       id: 3,
       senderId: 3,
-      recipientId: 2,
+      channelId: 2,
       reaction: [],
       timestamp: "2020-07-03T05:12:34.717Z",
       text: "こんにちはレモンさん。"
@@ -68,7 +68,7 @@ export const state = () => ({
     {
       id: 4,
       senderId: 2,
-      recipientId: 4,
+      channelId: 4,
       reaction: [],
       timestamp: "2020-06-30T05:10:33.717Z",
       text: "若菜さんこんにちは。レモンです。"
@@ -76,7 +76,7 @@ export const state = () => ({
     {
       id: 5,
       senderId: 3,
-      recipientId: null,
+      channelId: null,
       reaction: [],
       timestamp: "2020-07-03T05:12:34.717Z",
       text: "若菜です。みなさんはじめまして。"
