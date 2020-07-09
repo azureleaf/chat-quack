@@ -1,5 +1,13 @@
 # chat-quack
 
+## ToC
+
+- [chat-quack](#chat-quack)
+  - [ToC](#toc)
+  - [Build Setup](#build-setup)
+  - [Files](#files)
+  - [IDs userd in the app](#ids-userd-in-the-app)
+
 ## Build Setup
 
 ```bash
@@ -18,3 +26,22 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Files
+
+- `default.vue`: Base with header & both side bars.
+  - `_id.vue`: Dynamic routes. Wrapper for channel-specific contents.
+    - `Message.vue`: Show the messages for the specified channel.
+    - `Editor.vue`: Message editor on the page bottom.
+
+## IDs userd in the app
+
+- `User ID`: User IDs are used in the following cases:
+  - `sender ID`: Who sent the message
+  - `recipient ID`: Who got the message. This value will be `null` for group chats
+  - `viewer ID`: Who is viewing the app
+- `Channel ID`
+  - Every channel is either of personal chat / group chat
+  - Channel ID is used for Nuxt dynamic routing
+- `Message ID`
+  - Every message has the unique integer ID
