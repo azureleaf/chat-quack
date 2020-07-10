@@ -41,22 +41,22 @@ export const state = () => ({
   ],
   users: [
     {
-      id: 2,
+      id: 1,
       avatar: "/duck_yellow.png",
       title: "鴨川檸檬"
     },
     {
-      id: 3,
+      id: 2,
       avatar: "/duck_purple.png",
       title: "鴨川紫苑"
     },
     {
-      id: 4,
+      id: 3,
       avatar: "/duck_green.png",
       title: "鴨川若菜"
     },
     {
-      id: 5,
+      id: 4,
       avatar: "/duck_pink.png",
       title: "鴨川桜"
     }
@@ -67,38 +67,40 @@ export const state = () => ({
       isBilateral: false,
       avatar: "/home.png",
       name: "鴨川家雑談",
-      members: [
+      users: [
         { id: 1, isPinning: true },
         { id: 2, isPinning: false }
       ]
     },
     {
       id: 10002,
-      isBilateral: true,
-      avatar: null,
-      name: null,
-      members: []
+      users: [2, 3],
+      isBilateral: true
     },
     {
       id: 10003,
-      members: [],
-      isBilateral: true,
-      avatar: null,
-      name: null
+      users: [2, 4],
+      isBilateral: true
     },
     {
       id: 10004,
-      members: [],
-      isBilateral: true,
-      avatar: null,
-      name: null
+      users: [1, 2],
+      isBilateral: true
     },
     {
       id: 10005,
-      members: [],
-      isBilateral: true,
-      avatar: null,
-      name: null
+      users: [3, 4],
+      isBilateral: true
+    },
+    {
+      id: 10006,
+      users: [1, 3],
+      isBilateral: true
+    },
+    {
+      id: 10007,
+      users: [1, 4],
+      isBilateral: true
     }
   ],
   // should be stored in the firebase later
