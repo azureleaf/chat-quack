@@ -43,22 +43,22 @@ export const state = () => ({
     {
       id: 1,
       avatar: "/duck_yellow.png",
-      title: "鴨川檸檬"
+      name: "鴨川檸檬"
     },
     {
       id: 2,
       avatar: "/duck_purple.png",
-      title: "鴨川紫苑"
+      name: "鴨川紫苑"
     },
     {
       id: 3,
       avatar: "/duck_green.png",
-      title: "鴨川若菜"
+      name: "鴨川若菜"
     },
     {
       id: 4,
       avatar: "/duck_pink.png",
-      title: "鴨川桜"
+      name: "鴨川桜"
     }
   ],
   rooms: [
@@ -74,32 +74,50 @@ export const state = () => ({
     },
     {
       id: 10002,
-      users: [2, 3],
+      users: [
+        { id: 2, isPinning: false },
+        { id: 3, isPinning: false }
+      ],
       isBilateral: true
     },
     {
       id: 10003,
-      users: [2, 4],
+      users: [
+        { id: 2, isPinning: false },
+        { id: 4, isPinning: false }
+      ],
       isBilateral: true
     },
     {
       id: 10004,
-      users: [1, 2],
+      users: [
+        { id: 1, isPinning: false },
+        { id: 2, isPinning: false }
+      ],
       isBilateral: true
     },
     {
       id: 10005,
-      users: [3, 4],
+      users: [
+        { id: 3, isPinning: false },
+        { id: 4, isPinning: false }
+      ],
       isBilateral: true
     },
     {
       id: 10006,
-      users: [1, 3],
+      users: [
+        { id: 1, isPinning: false },
+        { id: 3, isPinning: false }
+      ],
       isBilateral: true
     },
     {
       id: 10007,
-      users: [1, 4],
+      users: [
+        { id: 1, isPinning: false },
+        { id: 4, isPinning: false }
+      ],
       isBilateral: true
     }
   ],

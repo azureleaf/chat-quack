@@ -1,31 +1,31 @@
 <template>
-  <v-app dark v-if="channels">
+  <v-app dark v-if="rooms">
     <v-navigation-drawer clipped fixed permanent app>
-      <v-list>
+      <v-list v-if="viewerId">
         <v-list-item
-          v-for="(channel, i) in channels"
+          v-for="(room, i) in myRooms"
           :key="i"
-          :to="`/users/${channel.id}`"
+          :to="`/users/${room.id}`"
           router
           exact
           class="px-0"
         >
           <v-list-item-avatar class="ml-4">
-            <img :src="channel.avatar" />
+            <img :src="room.avatar" />
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title>
-              <span v-if="viewerId == channel.id">マイチャット</span>
-              <span v-else>{{ channel.title }}</span></v-list-item-title
+              <span v-if="viewerId == room.id">マイチャット</span>
+              <span v-else>{{ room.title }}</span></v-list-item-title
             >
           </v-list-item-content>
           <v-list-item-action>
             <v-btn
               icon
-              @click.prevent="channel.isPinned = !channel.isPinned"
+              @click.prevent="room.isPinned = !room.isPinned"
               title="このチャットをピン留めしてチャット一覧の上に固定できます"
             >
-              <v-icon v-if="channel.isPinned" color="indigo darken-3"
+              <v-icon v-if="room.isPinned" color="indigo darken-3"
                 >mdi-pin</v-icon
               >
               <v-icon v-else color="blue-grey lighten-4">mdi-pin</v-icon>
@@ -70,14 +70,14 @@
       <v-col cols="2">
         <v-select
           v-model="viewerId"
-          :items="channels.filter(channel => channel.isPerson)"
+          :items="users"
           label="アカウント名"
           outlined
           item-color="grey"
           dense
           :width="50"
           item-value="id"
-          item-text="title"
+          item-text="name"
           @change="updateViewerId"
         ></v-select>
       </v-col>
@@ -111,8 +111,17 @@ export default {
     };
   },
   computed: {
-    channels() {
-      return this.$store.state.channels;
+    rooms() {
+      return this.$store.state.rooms;
+    },
+    myRooms() {
+      // Filter out the rooms which the viewer doesn't belong to
+      return this.rooms.filter(room =>
+        room.users.map(user => user.id).includes(this.viewerId)
+      );
+    },
+    users() {
+      return this.$store.state.users;
     }
   },
   methods: {
