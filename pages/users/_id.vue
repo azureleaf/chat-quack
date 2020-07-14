@@ -1,8 +1,6 @@
 <template>
   <v-layout>
     <v-flex class="text-center pa-0">
-      Room
-      {{ this.$route.params.id }}
       <Message
         v-for="(msg, index) in msgs"
         :key="index"
@@ -18,13 +16,15 @@
 <script>
 export default {
   computed: {
-    // List the messages for this room
+    // Get the list of the messages for this room
     msgs() {
       return this.$store.state.msgs.filter(
         msg => msg.roomId == this.roomId
       );
     },
+    // Get the ID of this room
     roomId() {
+      // Note that this returns the params of Nuxt dynamic routing
       return this.$route.params.id;
     }
   }
