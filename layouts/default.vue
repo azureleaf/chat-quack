@@ -11,12 +11,11 @@
           class="px-0"
         >
           <v-list-item-avatar class="ml-4">
-            <img :src="room.avatar" />
+            <img :src="getRoomSignboard(room).avatar" />
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title>
-              <span v-if="viewerId == room.id">マイチャット</span>
-              <span v-else>{{ room.title }}</span></v-list-item-title
+              <span>{{ getRoomSignboard(room).name }}</span></v-list-item-title
             >
           </v-list-item-content>
           <v-list-item-action>
@@ -128,6 +127,34 @@ export default {
     // Switch the viewer on selected
     updateViewerId() {
       this.$store.commit("setViewerId", { viewerId: this.viewerId });
+    },
+    // Return the room name & avatar URI
+    getRoomSignboard(room) {
+      // for the room of group chat
+      if (room.type == "multilateral")
+        return { name: room.name, avatar: room.avatar };
+      // for the room of two-person chat
+      if (room.type == "bilateral") {
+        // Get the user ID of the opponent
+        const opponentId = room.users.filter(
+          user => user.id != this.viewerId
+        )[0].id;
+
+        // Get the details of the opponent user
+        const opponent = this.users.filter(user => user.id == opponentId)[0];
+
+        // Return the name of the opponent user
+        return {
+          name: opponent.name,
+          avatar: opponent.avatar
+        };
+      }
+      // for the room of personal notes
+      if (room.type == "unilateral")
+        return {
+          name: "マイチャット",
+          avatar: this.users.filter(user => user.id == this.viewerId)[0].avatar
+        };
     }
   },
   mounted() {
