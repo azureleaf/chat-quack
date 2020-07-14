@@ -169,5 +169,20 @@ export const mutations = {
   // Update the ID of the user who is viewing the chat
   setViewerId(state, payload) {
     state.viewerId = payload.viewerId;
+  },
+  /**
+   * Add the new message to the state
+   * 
+   * @param {*} state Vuex state object
+   * @param {*} payload
+   *    New message (text body, sender / recipient, etc.) without message ID
+   */
+  storeNewMsg(state, payload) {
+    // Append the message ID to the new message
+    const newMsg = Object.assign({id: state.msgs.length + 1}, payload);
+    // console.log("Newly stored message", newMsg);
+
+    // Store entire message
+    state.msgs.push(newMsg)
   }
 };
