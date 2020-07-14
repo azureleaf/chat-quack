@@ -55,10 +55,12 @@ export default {
       )[0].name;
     },
     // Format the timestamp notation into readable string
+    // Prepend "0" when the minutes part has only 1 digit
     timestamp() {
       const ts = new Date(this.msg.timestamp);
-      return `${ts.getMonth() +
-        1}月${ts.getDate()}日 ${ts.getHours()}:${ts.getMinutes()}`;
+      return `${ts.getMonth() + 1}月${ts.getDate()}日 ${ts.getHours()}:${
+        ts.getMinutes() < 10 ? "0" + ts.getMinutes() : ts.getMinutes()
+      }`;
     }
   },
   mounted() {
