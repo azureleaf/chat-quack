@@ -1,5 +1,6 @@
 <template>
   <v-app dark v-if="rooms">
+    <!-- Left side bar -->
     <v-navigation-drawer clipped fixed permanent app>
       <v-list v-if="viewerId">
         <v-list-item
@@ -33,6 +34,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <!-- Right side bar -->
     <v-navigation-drawer clipped fixed right app permanent>
       <v-card color="grey lighten-2" flat outlined tile>
         <v-card-title class="text-subtitle-1 pa-2"
@@ -45,6 +47,7 @@
         <v-card-text class="px-2">概要はありません</v-card-text>
       </v-card>
     </v-navigation-drawer>
+    <!-- Top bar -->
     <v-app-bar
       clipped-left
       clipped-right
@@ -56,30 +59,34 @@
       align="center"
     >
       <img class="mr-3" src="/applogo.png" height="45" />
-      <v-col cols="4">
-        <v-text-field
-          label="チャット名、メッセージ内容を検索"
-          single-line
-          outlined
-          dense
-          prepend-icon="mdi-magnify"
-        ></v-text-field>
-      </v-col>
-      <v-spacer />
-      <v-col cols="2">
-        <v-select
-          v-model="viewerId"
-          :items="users"
-          label="アカウント名"
-          outlined
-          item-color="grey"
-          dense
-          :width="50"
-          item-value="id"
-          item-text="name"
-          @change="updateViewerId"
-        ></v-select>
-      </v-col>
+      <v-container fill-height fluid>
+        <v-row justify="center">
+          <v-col cols="4">
+            <v-text-field
+              label="チャット名、メッセージ内容を検索"
+              single-line
+              outlined
+              dense
+              prepend-icon="mdi-magnify"
+            ></v-text-field>
+          </v-col>
+          <v-spacer />
+          <v-col cols="2">
+            <v-select
+              v-model="viewerId"
+              :items="users"
+              label="アカウント名"
+              outlined
+              item-color="grey"
+              dense
+              :width="50"
+              item-value="id"
+              item-text="name"
+              @change="updateViewerId"
+            ></v-select>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -133,6 +140,7 @@ export default {
       // for the room of group chat
       if (room.type == "multilateral")
         return { name: room.name, avatar: room.avatar };
+
       // for the room of two-person chat
       if (room.type == "bilateral") {
         // Get the user ID of the opponent
@@ -149,6 +157,7 @@ export default {
           avatar: opponent.avatar
         };
       }
+
       // for the room of personal notes
       if (room.type == "unilateral")
         return {
