@@ -106,6 +106,7 @@ export const state = () => ({
     }
   ],
   // should be stored in the firebase later
+  // Recipient ID is required for "@" message
   msgs: [
     {
       id: 1,

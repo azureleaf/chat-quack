@@ -33,15 +33,15 @@
 
 <script>
 export default {
-  props: ["msgId", "channelId"],
+  props: ["msgId", "roomId"],
   data() {
     return { viewerId: null };
   },
   computed: {
     // Get the URI of the avatar image of this message sender
     avatarUri() {
-      return this.$store.state.channels.filter(
-        channel => channel.id == this.msg.senderId
+      return this.$store.state.users.filter(
+        user => user.id == this.msg.senderId
       )[0].avatar;
     },
     // Return a single message object for the message ID specified by the prop
@@ -50,9 +50,9 @@ export default {
     },
     // Map the sender ID in the msg object to the readable name
     sender() {
-      return this.$store.state.channels.filter(
-        channel => channel.id == this.msg.senderId
-      )[0].title;
+      return this.$store.state.users.filter(
+        user => user.id == this.msg.senderId
+      )[0].name;
     },
     // Format the timestamp notation into readable string
     timestamp() {

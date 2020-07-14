@@ -1,12 +1,12 @@
 <template>
   <v-layout>
     <v-flex class="text-center pa-0">
-      Channel
+      Room
       {{ this.$route.params.id }}
       <Message
         v-for="(msg, index) in msgs"
         :key="index"
-        :channelId="channelId"
+        :roomId="roomId"
         :msgId="msg.id"
       />
     </v-flex>
@@ -18,13 +18,13 @@
 <script>
 export default {
   computed: {
+    // List the messages for this room
     msgs() {
-      // Filter the messages which belong to this particular channel
       return this.$store.state.msgs.filter(
-        msg => msg.channelId == this.channelId
+        msg => msg.roomId == this.roomId
       );
     },
-    channelId() {
+    roomId() {
       return this.$route.params.id;
     }
   }
