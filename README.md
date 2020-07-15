@@ -7,6 +7,8 @@
   - [Build Setup](#build-setup)
   - [Files](#files)
   - [IDs userd in the app](#ids-userd-in-the-app)
+  - [Dev Notes](#dev-notes)
+    - [Firebase Setting](#firebase-setting)
 
 ## Build Setup
 
@@ -45,3 +47,13 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
   - Channel ID is used for Nuxt dynamic routing
 - `Message ID`
   - Every message has the unique integer ID
+
+## Dev Notes
+
+### Firebase Setting
+
+1. Create Firebase project
+2. Get the SDK snippets at `Project Overview > Project Settings`
+1. Create the DB at `Project > Database`
+  - Firestore Region: Asia Northeast 1 (Tokyo)
+2. 
