@@ -8,7 +8,12 @@
   - [Files](#files)
   - [IDs userd in the app](#ids-userd-in-the-app)
   - [Dev Notes](#dev-notes)
-    - [Firebase Setting](#firebase-setting)
+    - [Create Nuxt app](#create-nuxt-app)
+    - [Firebase Settings (on the website)](#firebase-settings-on-the-website)
+    - [Firebase (local)](#firebase-local)
+  - [Study Notes on Nuxt.js](#study-notes-on-nuxtjs)
+    - [Directory](#directory)
+  - [Study Notes on Firebase](#study-notes-on-firebase)
 
 ## Build Setup
 
@@ -50,10 +55,34 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ## Dev Notes
 
-### Firebase Setting
+### Create Nuxt app
+
+1. `npx create-nuxt-app chat-quack`
+2. `cd chat-quack`
+3. `npm run dev`
+
+### Firebase Settings (on the website)
 
 1. Create Firebase project
 2. Get the SDK snippets at `Project Overview > Project Settings`
 1. Create the DB at `Project > Database`
   - Firestore Region: Asia Northeast 1 (Tokyo)
-2. 
+
+
+### Firebase (local)
+
+1. `npm install -g firebase-tools` if not installed
+2. `firebase login`
+3. `firebase init`
+
+## Study Notes on Nuxt.js
+
+
+### Directory
+
+- pages: equivalent to "views" of Vue-CLI?
+- packages.json
+- 
+
+## Study Notes on Firebase
+
