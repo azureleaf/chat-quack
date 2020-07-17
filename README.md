@@ -11,10 +11,19 @@
     - [Create Nuxt app](#create-nuxt-app)
     - [Firebase Settings (on the website)](#firebase-settings-on-the-website)
     - [Firebase (local)](#firebase-local)
-  - [Study Notes on Nuxt.js](#study-notes-on-nuxtjs)
-    - [Directory](#directory)
-    - [Routing](#routing)
-  - [Study Notes on Firebase](#study-notes-on-firebase)
+- [Study Notes on Nuxt.js](#study-notes-on-nuxtjs)
+  - [Directory](#directory)
+  - [Routing](#routing)
+    - [Basic Routes](#basic-routes)
+    - [Dynamic Routes](#dynamic-routes)
+    - [Nested Routes](#nested-routes)
+    - [Nested Dynamic Routes](#nested-dynamic-routes)
+    - [Named Views](#named-views)
+  - [Views: Layouts & Pages](#views-layouts--pages)
+  - [Vuex State](#vuex-state)
+  - [Context](#context)
+  - [Async Data](#async-data)
+- [Study Notes on Firebase](#study-notes-on-firebase)
 
 ## Build Setup
 
@@ -75,36 +84,80 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 1. `npm install -g firebase-tools` if not installed
 2. `firebase login`
 3. `firebase init`
+  - Do this at the Nuxt.js dir root
+4. `firebase login`
 
-## Study Notes on Nuxt.js
+# Study Notes on Nuxt.js
 
-
-### Directory
+## Directory
 
 - pages
   - equivalent to "views" dir of Vue-CLI, maybe
-- packages.json
-- 
+- `assets/` Uncompiled Stylus, SASS, images, fonts
+- `components/` Files inside this dir can't access to `asyncData`
+- `layouts/`
+- `middleware/`
+- `pages/`
+  - Like `src/views` of Vue-CLI
+- `plugins/`
+- `static/`
+  - Relative paths to the files inside this dir will be mapped to the root
+- `store/`
+- `packages.json`
+- `nuxt.config.js`
+  - Configuration
 
-### Routing
+## Routing
 
 ```html
 <nuxt-link to="/">Home page</nuxt-link>
-
-
 ```
 
-1. Basic Routes
-2. Dynamic Routes
-  - Name starts with underscore; e.g. `_id.vue`
-  - Route strings can be validated
-3. Nested Routes
-4. Nested Dynamic Routes
+### Basic Routes
+### Dynamic Routes
+- Name starts with underscore; e.g. `_id.vue`
+- Route strings can be validated
+### Nested Routes
 
-- Named Views
+- Define route by putting the files in the appropriate structure
+
+- `pages/`
+  - `users/` container of child views; Name of this directory must be same as the parent view file "users.vue"
+    - `_id.vue` child view
+    - `index.vue` child view
+  - `users.vue` parent view
+
+- Use `<nuxt-child>` in the parent Vue component
+
+### Nested Dynamic Routes
+
+### Named Views
   - When the multiple `<nuxt>` tag must be used in a page
   - Specify which components to be inserted to `<nuxt name="blahblah">`, specify them in `nuxt.config.js`
 - 
 
-## Study Notes on Firebase
+## Views: Layouts & Pages
+
+- Simplest layout
+
+```html
+<template>
+  <nuxt/>
+</template>
+```
+
+## Vuex State
+
+- `fetch`
+
+## Context
+
+- Context is the object/params passed from the Nuxt to the Vue instance
+- Context is available at any lifetime; it's available even in `asyncData`
+
+## Async Data
+
+- `asyncData` is used for processes before the rendering of Vue components
+
+# Study Notes on Firebase
 
