@@ -13,6 +13,7 @@
     - [Firebase (local)](#firebase-local)
   - [Study Notes on Nuxt.js](#study-notes-on-nuxtjs)
     - [Directory](#directory)
+    - [Routing](#routing)
   - [Study Notes on Firebase](#study-notes-on-firebase)
 
 ## Build Setup
@@ -80,8 +81,29 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ### Directory
 
-- pages: equivalent to "views" of Vue-CLI?
+- pages
+  - equivalent to "views" dir of Vue-CLI, maybe
 - packages.json
+- 
+
+### Routing
+
+```html
+<nuxt-link to="/">Home page</nuxt-link>
+
+
+```
+
+1. Basic Routes
+2. Dynamic Routes
+  - Name starts with underscore; e.g. `_id.vue`
+  - Route strings can be validated
+3. Nested Routes
+4. Nested Dynamic Routes
+
+- Named Views
+  - When the multiple `<nuxt>` tag must be used in a page
+  - Specify which components to be inserted to `<nuxt name="blahblah">`, specify them in `nuxt.config.js`
 - 
 
 ## Study Notes on Firebase
