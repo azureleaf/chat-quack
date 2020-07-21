@@ -8,9 +8,10 @@
   - [Files](#files)
   - [IDs userd in the app](#ids-userd-in-the-app)
   - [Dev Notes](#dev-notes)
-    - [Create Nuxt app](#create-nuxt-app)
-    - [Firebase Settings (on the website)](#firebase-settings-on-the-website)
-    - [Firebase (local)](#firebase-local)
+    - [Nuxt.js: Create app](#nuxtjs-create-app)
+    - [Nuxt.js: Generate static file](#nuxtjs-generate-static-file)
+    - [Firebase: On the website](#firebase-on-the-website)
+    - [Firebase: local](#firebase-local)
 - [Study Notes on Nuxt.js](#study-notes-on-nuxtjs)
   - [Directory](#directory)
   - [Routing](#routing)
@@ -65,27 +66,35 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ## Dev Notes
 
-### Create Nuxt app
+### Nuxt.js: Create app
 
 1. `npx create-nuxt-app chat-quack`
 2. `cd chat-quack`
 3. `npm run dev`
 
-### Firebase Settings (on the website)
+### Nuxt.js: Generate static file
+
+1. Change Nuxt file generation destination in `nuxt.config.js`
+2. `npm run generate`
+
+### Firebase: On the website
 
 1. Create Firebase project
 2. Get the SDK snippets at `Project Overview > Project Settings`
-1. Create the DB at `Project > Database`
-  - Firestore Region: Asia Northeast 1 (Tokyo)
+3. Create the DB at `Project > Database`
+   - Firestore Region: Asia Northeast 1 (Tokyo)
 
-
-### Firebase (local)
+### Firebase: local
 
 1. `npm install -g firebase-tools` if not installed
 2. `firebase login`
 3. `firebase init`
-  - Do this at the Nuxt.js dir root
-4. `firebase login`
+   - Do this at the Nuxt.js dir root
+   - Enable `Hosting`, `Firestore`
+   - Choose `Use an existing project`
+   - Choose SSR over SPA
+   - Choose not to overwrite existing `index.html`
+4. `firebase deploy`
 
 # Study Notes on Nuxt.js
 
@@ -114,14 +123,18 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ```
 
 ### Basic Routes
+
 ### Dynamic Routes
+
 - Name starts with underscore; e.g. `_id.vue`
 - Route strings can be validated
+
 ### Nested Routes
 
 - Define route by putting the files in the appropriate structure
 
 - `pages/`
+
   - `users/` container of child views; Name of this directory must be same as the parent view file "users.vue"
     - `_id.vue` child view
     - `index.vue` child view
@@ -132,9 +145,10 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ### Nested Dynamic Routes
 
 ### Named Views
-  - When the multiple `<nuxt>` tag must be used in a page
-  - Specify which components to be inserted to `<nuxt name="blahblah">`, specify them in `nuxt.config.js`
-- 
+
+- When the multiple `<nuxt>` tag must be used in a page
+- Specify which components to be inserted to `<nuxt name="blahblah">`, specify them in `nuxt.config.js`
+-
 
 ## Views: Layouts & Pages
 
@@ -142,7 +156,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ```html
 <template>
-  <nuxt/>
+  <nuxt />
 </template>
 ```
 
@@ -160,4 +174,3 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 - `asyncData` is used for processes before the rendering of Vue components
 
 # Study Notes on Firebase
-
