@@ -1,40 +1,46 @@
 export const state = () => ({
   // For which user the entire UI is displayed
-  viewerId: 2, // Initial value
+  viewerId: 1, // Initial value
   users: [
     {
       id: 1,
       avatar: "/duck_yellow.png",
-      name: "鴨川檸檬"
+      name: "Donald Duck"
     },
     {
       id: 2,
       avatar: "/duck_purple.png",
-      name: "鴨川紫苑"
+      name: "Daisy Duck"
     },
     {
       id: 3,
       avatar: "/duck_green.png",
-      name: "鴨川若菜"
+      name: "Louie Duck"
     },
     {
       id: 4,
       avatar: "/duck_pink.png",
-      name: "鴨川桜"
+      name: "Huey Duck"
+    },
+    {
+      id: 5,
+      avatar: "/duck_blue.png",
+      name: "Dewey Duck"
     }
   ],
   rooms: [
     {
-      id: 10001,
+      id: 30001,
       type: "multilateral",
       users: [
         { id: 1, isPinning: true },
         { id: 2, isPinning: false },
         { id: 3, isPinning: true },
-        { id: 4, isPinning: false }
+        { id: 4, isPinning: false },
+        { id: 5, isPinning: false },
       ],
       avatar: "/home.png",
-      name: "鴨川家雑談"
+      name: "ダック家雑談"
     },
     {
       id: 10002,
@@ -86,23 +92,60 @@ export const state = () => ({
     },
     {
       id: 10008,
+      type: "bilateral",
+      users: [
+        { id: 1, isPinning: false },
+        { id: 5, isPinning: false }
+      ]
+    },
+    {
+      id: 10009,
+      type: "bilateral",
+      users: [
+        { id: 2, isPinning: false },
+        { id: 5, isPinning: false }
+      ]
+    },
+    {
+      id: 10010,
+      type: "bilateral",
+      users: [
+        { id: 3, isPinning: false },
+        { id: 5, isPinning: false }
+      ]
+    },
+    {
+      id: 10011,
+      type: "bilateral",
+      users: [
+        { id: 4, isPinning: false },
+        { id: 5, isPinning: false }
+      ]
+    },
+    {
+      id: 20001,
       type: "unilateral",
       users: [{ id: 1, isPinning: true }]
     },
     {
-      id: 10009,
+      id: 20002,
       type: "unilateral",
       users: [{ id: 2, isPinning: false }]
     },
     {
-      id: 10010,
+      id: 20003,
       type: "unilateral",
       users: [{ id: 3, isPinning: false }]
     },
     {
-      id: 10011,
+      id: 20004,
       type: "unilateral",
       users: [{ id: 4, isPinning: false }]
+    },
+    {
+      id: 20005,
+      type: "unilateral",
+      users: [{ id: 5, isPinning: false }]
     }
   ],
   // should be stored in the firebase later
@@ -112,10 +155,10 @@ export const state = () => ({
       id: 1,
       senderId: 1,
       recipientId: null,
-      roomId: 10001,
+      roomId: 30001,
       reaction: [],
       timestamp: "2020-06-30T05:10:33.717Z",
-      text: "皆さんこんにちは。レモンです。"
+      text: "Morning everyone! I'm Donald"
     },
     {
       id: 2,
@@ -124,43 +167,43 @@ export const state = () => ({
       roomId: 10004,
       reaction: [],
       timestamp: "2020-07-03T05:10:34.717Z",
-      text: "紫苑さんこんにちは。レモンです。"
+      text: "Hi Daisy! This is Donald!"
     },
     {
       id: 3,
       senderId: 2,
       recipientId: null,
-      roomId: 10004,
+      roomId: 10002,
       reaction: [],
       timestamp: "2020-07-03T05:12:34.717Z",
-      text: "こんにちはレモンさん。"
+      text: "Hello"
     },
     {
       id: 4,
       senderId: 1,
       recipientId: null,
-      roomId: 10006,
+      roomId: 10007,
       reaction: [],
       timestamp: "2020-06-30T05:10:33.717Z",
-      text: "若菜さんこんにちは。レモンです。"
+      text: "Oi Huey!"
     },
     {
       id: 5,
       senderId: 3,
       recipientId: null,
-      roomId: 10001,
+      roomId: 30001,
       reaction: [],
       timestamp: "2020-07-03T05:12:34.717Z",
-      text: "若菜です。みなさんはじめまして。"
+      text: "Hello there, this is Louie"
     },
     {
       id: 6,
       senderId: 1,
       recipientId: null,
-      roomId: 10008,
+      roomId: 20001,
       reaction: [],
       timestamp: "2020-07-03T05:12:34.717Z",
-      text: "レモンの買い物メモ：　牛乳を買う"
+      text: "Donald's todos: Going to shopping mall"
     }
   ]
 });
