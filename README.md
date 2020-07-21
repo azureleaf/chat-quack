@@ -9,11 +9,10 @@
   - [IDs userd in the app](#ids-userd-in-the-app)
   - [Dev Notes](#dev-notes)
     - [Nuxt.js: Create app](#nuxtjs-create-app)
-    - [Nuxt.js: Generate static file](#nuxtjs-generate-static-file)
-    - [Firebase: On the website](#firebase-on-the-website)
-    - [Firebase: local](#firebase-local)
+    - [Firebase: set up the project & hosting](#firebase-set-up-the-project--hosting)
+    - [Firestore Setup](#firestore-setup)
 - [Study Notes on Nuxt.js](#study-notes-on-nuxtjs)
-  - [Directory](#directory)
+  - [Dir](#dir)
   - [Routing](#routing)
     - [Basic Routes](#basic-routes)
     - [Dynamic Routes](#dynamic-routes)
@@ -71,34 +70,46 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 1. `npx create-nuxt-app chat-quack`
 2. `cd chat-quack`
 3. `npm run dev`
+4. ~~`npm i -S nuxt`~~ (perhaps necessary)
+5. Add `generate` command to the `package.json`
+    - `"generate": "nuxt build && nuxt export"`
+6. `npm run generate` to generate the static app files to `dist/`
 
-### Nuxt.js: Generate static file
+### Firebase: set up the project & hosting
 
-1. Change Nuxt file generation destination in `nuxt.config.js`
-2. `npm run generate`
-
-### Firebase: On the website
-
-1. Create Firebase project
-2. Get the SDK snippets at `Project Overview > Project Settings`
-3. Create the DB at `Project > Database`
-   - Firestore Region: Asia Northeast 1 (Tokyo)
-
-### Firebase: local
-
-1. `npm install -g firebase-tools` if not installed
-2. `firebase login`
-3. `firebase init`
+1. Create the project on the Firebase website
+1. `npm install -g firebase-tools`
+   - Firebase CLI
+2. `npm install -S firebase`
+   - Firebase SDK for Node.js client required when the app access the Firestore, RTDB, storage, etc.
+3. `firebase login`
+4. `firebase init`
    - Do this at the Nuxt.js dir root
    - Enable `Hosting`, `Firestore`
-   - Choose `Use an existing project`
-   - Choose SSR over SPA
+   - Choose `Use an existing project`, then specify the project you created on the Firebase console
+   - Choose `dist` dir instead of default `public`
+   - Choose default `firestore.rules`
+   - Choose default `firestore.indexes.json`
+   - Choose not to use `single-page app` to choose SSR
    - Choose not to overwrite existing `index.html`
-4. `firebase deploy`
+5. `firebase deploy`, then check if deployment is successful
+   - URL: https://vue-auth-test-ff8ed.web.app
+
+### Firestore Setup
+
+1. Create the DB at `Project > Database` on the website console
+   - Firestore Region: Asia Northeast 1 (Tokyo)
+   - Enabled `write` and `read` for everybody
+2. Get the SDK snippets at `Project Overview > Project Settings`
+3. Create `plugins/firebase.js`
+   - Paste the snippets here
+   - Optional: you can use `Vuefire` for handy syntax to access to Firebase. In that case you need `Vue.use(VueFire)`
+4. Include the plugin with `nuxt.config.js`
+5. 
 
 # Study Notes on Nuxt.js
 
-## Directory
+## Dir
 
 - pages
   - equivalent to "views" dir of Vue-CLI, maybe
