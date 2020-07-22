@@ -198,6 +198,17 @@ export default {
           console.log("Document Data:", doc.data());
         });
       });
+
+    // Test: delete Firestore data
+    db.collection("countries")
+      .doc("6UvSh51Abm6e3gX1dTix")
+      .delete()
+      .then(function() {
+        console.log("Document successfully deleted!");
+      })
+      .catch(function(error) {
+        console.error("Error removing document: ", error);
+      });
   }
 };
 </script>

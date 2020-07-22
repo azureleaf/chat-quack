@@ -13,7 +13,11 @@
     - [Firestore Setup](#firestore-setup)
 - [Study Notes on Firestore](#study-notes-on-firestore)
   - [Data Hierarchy](#data-hierarchy)
-  - [CRUD](#crud)
+  - [Create](#create)
+  - [Read](#read)
+  - [Update](#update)
+  - [Delete](#delete)
+  - [Useful Notations](#useful-notations)
 - [Study Notes on Nuxt.js](#study-notes-on-nuxtjs)
   - [Dir](#dir)
   - [Routing](#routing)
@@ -26,7 +30,6 @@
   - [Vuex State](#vuex-state)
   - [Context](#context)
   - [Async Data](#async-data)
-- [Study Notes on Firebase](#study-notes-on-firebase)
 
 ## Build Setup
 
@@ -129,11 +132,9 @@ export default app
 
 - `database` > `collections` > (`subcollections`, if any) > `documents` > `data`
 
-## CRUD
+## Create 
 
 ```js
-
-/* CREATE */
 // You don't have to create the collection (here "users") explicitly;
 // it will be created when the first document is added
 cdb.collection("users").add({
@@ -147,13 +148,62 @@ cdb.collection("users").add({
 .catch(function(error) {
     console.error("Error adding document: ", error);
 });
+```
 
-/* READ */
+## Read
+
+```js
 db.collection("users").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()}`);
     });
 });
+```
+
+## Update
+
+```js
+// New data will be created if the document doesn't exist
+db.collection("cities").doc("LA").set({
+    name: "Los Angeles",
+    state: "CA",
+    country: "USA"
+})
+.then(function() {
+    console.log("Document successfully written!");
+})
+.catch(function(error) {
+    console.error("Error writing document: ", error);
+});
+```
+
+## Delete
+
+```js
+/* Delete a doc */
+// You can't delete entire collection on the web app; delete docs one by one
+db.collection("cities").doc("DC").delete().then(function() {
+    console.log("Document successfully deleted!");
+}).catch(function(error) {
+    console.error("Error removing document: ", error);
+});
+
+/* Delete a field */
+var cityRef = db.collection('cities').doc('BJ');
+
+// Remove the 'capital' field from the document
+var removeCapital = cityRef.update({
+    capital: firebase.firestore.FieldValue.delete()
+});
+```
+
+## Useful Notations
+
+```js
+// Get the ref to the collection
+const memosRef = firestore.collection('memos')
+
+
 ```
 
 # Study Notes on Nuxt.js
@@ -232,5 +282,3 @@ db.collection("users").get().then((querySnapshot) => {
 ## Async Data
 
 - `asyncData` is used for processes before the rendering of Vue components
-
-# Study Notes on Firebase
