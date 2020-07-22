@@ -97,6 +97,9 @@
 </template>
 
 <script>
+import firebase from "~/plugins/firebase";
+var db = firebase.firestore();
+
 export default {
   data() {
     return {
@@ -166,9 +169,35 @@ export default {
         };
     }
   },
-  mounted() {
+  async mounted() {
     // Set the initial viewer
     this.viewerId = this.$store.state.viewerId;
+
+    // Test: try to add new document
+    await db
+      .collection("countries")
+      .add({
+        country: "UK",
+        code: 44,
+        is_island: true,
+        capital: "London"
+      })
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+
+    // Test: load Firestore data
+    db.collection("countries")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          console.log(`Document ID: ${doc.id}`);
+          console.log("Document Data:", doc.data());
+        });
+      });
   }
 };
 </script>

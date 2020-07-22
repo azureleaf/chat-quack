@@ -11,6 +11,9 @@
     - [Nuxt.js: Create app](#nuxtjs-create-app)
     - [Firebase: set up the project & hosting](#firebase-set-up-the-project--hosting)
     - [Firestore Setup](#firestore-setup)
+- [Study Notes on Firestore](#study-notes-on-firestore)
+  - [Data Hierarchy](#data-hierarchy)
+  - [CRUD](#crud)
 - [Study Notes on Nuxt.js](#study-notes-on-nuxtjs)
   - [Dir](#dir)
   - [Routing](#routing)
@@ -80,10 +83,8 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 1. Create the project on the Firebase website
 1. `npm install -g firebase-tools`
    - Firebase CLI
-2. `npm install -S firebase`
-   - Firebase SDK for Node.js client required when the app access the Firestore, RTDB, storage, etc.
-3. `firebase login`
-4. `firebase init`
+4. `firebase login`
+5. `firebase init`
    - Do this at the Nuxt.js dir root
    - Enable `Hosting`, `Firestore`
    - Choose `Use an existing project`, then specify the project you created on the Firebase console
@@ -92,20 +93,68 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
    - Choose default `firestore.indexes.json`
    - Choose not to use `single-page app` to choose SSR
    - Choose not to overwrite existing `index.html`
-5. `firebase deploy`, then check if deployment is successful
+6. `firebase deploy`, then check if deployment is successful
    - URL: https://vue-auth-test-ff8ed.web.app
 
 ### Firestore Setup
 
+1. `npm install -S firebase` (Alternatively, you can use CDN)
+   - Firebase SDK for Node.js client required when the app access the Firestore, RTDB, storage, etc.
 1. Create the DB at `Project > Database` on the website console
    - Firestore Region: Asia Northeast 1 (Tokyo)
    - Enabled `write` and `read` for everybody
-2. Get the SDK snippets at `Project Overview > Project Settings`
-3. Create `plugins/firebase.js`
+1. Get the SDK snippets at `Project Overview > Project Settings`
+1. Create `plugins/firebase.js`
    - Paste the snippets here
    - Optional: you can use `Vuefire` for handy syntax to access to Firebase. In that case you need `Vue.use(VueFire)`
-4. Include the plugin with `nuxt.config.js`
-5. 
+1. Include the plugin with `nuxt.config.js`
+1. Write the Firebase methods in the Vuex / Vue file
+
+```js
+// plugins/firebase.js
+import firebase from 'firebase'
+const app = firebase.initializeApp({
+  apiKey: '### FIREBASE API KEY ###',
+  authDomain: '### FIREBASE AUTH DOMAIN ###',
+  projectId: '### CLOUD FIRESTORE PROJECT ID ###'
+})
+export const storage = app.storage()
+export const db = app.firestore() 
+export default app
+```
+
+# Study Notes on Firestore
+
+## Data Hierarchy
+
+- `database` > `collections` > (`subcollections`, if any) > `documents` > `data`
+
+## CRUD
+
+```js
+
+/* CREATE */
+// You don't have to create the collection (here "users") explicitly;
+// it will be created when the first document is added
+cdb.collection("users").add({
+    first: "Ada",
+    last: "Lovelace",
+    born: 1815
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+
+/* READ */
+db.collection("users").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+    });
+});
+```
 
 # Study Notes on Nuxt.js
 
