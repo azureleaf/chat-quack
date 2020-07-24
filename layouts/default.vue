@@ -177,10 +177,11 @@ export default {
     await db
       .collection("countries")
       .add({
-        country: "UK",
+        name: "UK",
         code: 44,
         is_island: true,
-        capital: "London"
+        capital: "London",
+        added_at: new Date()
       })
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
@@ -190,7 +191,8 @@ export default {
       });
 
     // Test: load Firestore data
-    db.collection("countries")
+    await db
+      .collection("countries")
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
@@ -200,14 +202,14 @@ export default {
       });
 
     // Test: delete Firestore data
-    db.collection("countries")
-      .doc("6UvSh51Abm6e3gX1dTix")
-      .delete()
-      .then(function() {
-        console.log("Document successfully deleted!");
-      })
-      .catch(function(error) {
-        console.error("Error removing document: ", error);
+    await db
+      .collection("countries")
+      .where("capital", "==", "London")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          doc.ref.delete();
+        });
       });
   }
 };
