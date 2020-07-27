@@ -4,12 +4,12 @@
       <v-col>
         <v-card flat tile>
           <v-card-title>
-            <v-btn text tile>
+            <!-- <v-btn text tile>
               <v-icon>mdi-emoticon-outline</v-icon>
             </v-btn>
             <v-btn text tile>
               <v-icon>mdi-at</v-icon>
-            </v-btn>
+            </v-btn> -->
             <v-spacer />
             <v-btn
               color="primary"

@@ -35,7 +35,7 @@
       </v-list>
     </v-navigation-drawer>
     <!-- Right side bar -->
-    <v-navigation-drawer clipped fixed right app permanent>
+    <!-- <v-navigation-drawer clipped fixed right app permanent>
       <v-card color="grey lighten-2" flat outlined tile>
         <v-card-title class="text-subtitle-1 pa-2"
           ><span>概要</span><v-spacer /><v-btn icon
@@ -46,7 +46,7 @@
       <v-card flat outlined tile>
         <v-card-text class="px-2">概要はありません</v-card-text>
       </v-card>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
     <!-- Top bar -->
     <v-app-bar
       clipped-left

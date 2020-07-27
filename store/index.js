@@ -37,10 +37,11 @@ export const state = () => ({
         { id: 2, isPinning: false },
         { id: 3, isPinning: true },
         { id: 4, isPinning: false },
-        { id: 5, isPinning: false },
+        { id: 5, isPinning: false }
       ],
       avatar: "/home.png",
-      name: "ダック家雑談"
+      name: "ダック家雑談",
+      abstract: "一家の雑談の場所です"
     },
     {
       id: 10002,
@@ -48,7 +49,8 @@ export const state = () => ({
       users: [
         { id: 2, isPinning: false },
         { id: 3, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 10003,
@@ -56,7 +58,8 @@ export const state = () => ({
       users: [
         { id: 2, isPinning: false },
         { id: 4, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 10004,
@@ -64,7 +67,8 @@ export const state = () => ({
       users: [
         { id: 1, isPinning: false },
         { id: 2, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 10005,
@@ -72,7 +76,8 @@ export const state = () => ({
       users: [
         { id: 3, isPinning: false },
         { id: 4, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 10006,
@@ -80,7 +85,8 @@ export const state = () => ({
       users: [
         { id: 1, isPinning: false },
         { id: 3, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 10007,
@@ -88,7 +94,8 @@ export const state = () => ({
       users: [
         { id: 1, isPinning: false },
         { id: 4, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 10008,
@@ -96,7 +103,8 @@ export const state = () => ({
       users: [
         { id: 1, isPinning: false },
         { id: 5, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 10009,
@@ -104,7 +112,8 @@ export const state = () => ({
       users: [
         { id: 2, isPinning: false },
         { id: 5, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 10010,
@@ -112,7 +121,8 @@ export const state = () => ({
       users: [
         { id: 3, isPinning: false },
         { id: 5, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 10011,
@@ -120,32 +130,38 @@ export const state = () => ({
       users: [
         { id: 4, isPinning: false },
         { id: 5, isPinning: false }
-      ]
+      ],
+      abstract: ""
     },
     {
       id: 20001,
       type: "unilateral",
-      users: [{ id: 1, isPinning: true }]
+      users: [{ id: 1, isPinning: true }],
+      abstract: ""
     },
     {
       id: 20002,
       type: "unilateral",
-      users: [{ id: 2, isPinning: false }]
+      users: [{ id: 2, isPinning: false }],
+      abstract: ""
     },
     {
       id: 20003,
       type: "unilateral",
-      users: [{ id: 3, isPinning: false }]
+      users: [{ id: 3, isPinning: false }],
+      abstract: ""
     },
     {
       id: 20004,
       type: "unilateral",
-      users: [{ id: 4, isPinning: false }]
+      users: [{ id: 4, isPinning: false }],
+      abstract: ""
     },
     {
       id: 20005,
       type: "unilateral",
-      users: [{ id: 5, isPinning: false }]
+      users: [{ id: 5, isPinning: false }],
+      abstract: ""
     }
   ],
   // should be stored in the firebase later
@@ -215,16 +231,16 @@ export const mutations = {
   },
   /**
    * Add the new message to the state
-   * 
+   *
    * @param {*} state Vuex state object
    * @param {*} payload
    *    New message (text body, sender / recipient, etc.) without message ID
    */
   storeNewMsg(state, payload) {
     // Append the message ID to the message
-    const newMsg = Object.assign({id: state.msgs.length + 1}, payload);
+    const newMsg = Object.assign({ id: state.msgs.length + 1 }, payload);
 
     // Store entire message
-    state.msgs.push(newMsg)
+    state.msgs.push(newMsg);
   }
 };
