@@ -167,50 +167,54 @@ export default {
           name: "マイチャット",
           avatar: this.users.filter(user => user.id == this.viewerId)[0].avatar
         };
+    },
+    async tryFirebase() {
+      // Test: try to add new document
+      await db
+        .collection("countries")
+        .add({
+          name: "United Kingdom",
+          code: 44,
+          is_island: true,
+          capital: "London",
+          added_at: new Date()
+        })
+        .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+
+      // Test: load Firestore data
+      await db
+        .collection("countries")
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            console.log(`Document ID: ${doc.id}`);
+            console.log("Document Data:", doc.data());
+          });
+        });
+
+      // Test: delete Firestore data
+      await db
+        .collection("countries")
+        .where("capital", "==", "Londona")
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            doc.ref.delete();
+          });
+        });
     }
   },
-  async mounted() {
+  mounted() {
     // Set the initial viewer
     this.viewerId = this.$store.state.viewerId;
 
-    // Test: try to add new document
-    await db
-      .collection("countries")
-      .add({
-        name: "UK",
-        code: 44,
-        is_island: true,
-        capital: "London",
-        added_at: new Date()
-      })
-      .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
-      });
-
-    // Test: load Firestore data
-    await db
-      .collection("countries")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          console.log(`Document ID: ${doc.id}`);
-          console.log("Document Data:", doc.data());
-        });
-      });
-
-    // Test: delete Firestore data
-    await db
-      .collection("countries")
-      .where("capital", "==", "London")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          doc.ref.delete();
-        });
-      });
+    // Try to access Firebase
+    // this.tryFirebase();
   }
 };
 </script>
