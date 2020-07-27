@@ -61,7 +61,7 @@
       <img class="mr-3" src="/applogo.png" height="45" />
       <v-container fill-height fluid>
         <v-row justify="center">
-          <v-col cols="4">
+          <!-- <v-col cols="4">
             <v-text-field
               label="チャット名、メッセージ内容を検索"
               single-line
@@ -69,13 +69,13 @@
               dense
               prepend-icon="mdi-magnify"
             ></v-text-field>
-          </v-col>
+          </v-col> -->
           <v-spacer />
           <v-col cols="2">
             <v-select
               v-model="viewerId"
               :items="users"
-              label="アカウント名"
+              label="アカウント切替"
               outlined
               item-color="grey"
               dense
