@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "firebase": "^7.16.1",
-    "nuxt": "^2.13.3"
+    "nuxt": "^3.0.0"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.11.2"
+    "@nuxtjs/vuetify": "^1.12.3"
   }
 }
